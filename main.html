@@ -39,7 +39,8 @@
                 <img src="./logo.png" alt="METACER" class="logo-main">
             </div>
             <div class="section-content">
-                <div class="hero-text">
+                <div class="glassycardlight">
+                     <div class="hero-text">
                     <h1 class="hero-title">Launch your E-Commerce Platform and start <span
                             class="highlight-text">selling
                             Now</span> </h1>
@@ -56,6 +57,8 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                 </div>
+                </div>
+               
                 <section class="login-container" id="login-container">
                     <p class="login-subtitle" id="form-title">Sign in to continue</p>
 
@@ -129,12 +132,33 @@
                             </div>
                         </div>
 
+                        <!-- Phone Numbers -->
                         <div class="additional-field" id="phone-field">
                             <div class="form-group">
                                 <label for="phone" class="form-label">Phone Number</label>
                                 <input type="tel" id="phone" class="form-input" placeholder="(+20) 1010-773-587">
                             </div>
+                            <div class="form-group">
+                                    <label for="business-phone" class="form-label">Business Phone Number (Optional)</label>
+                                    <input type="tel" id="business-phone" class="form-input" placeholder="(+20) 2222-555-888">
+                            </div>
                         </div>
+
+                        
+                                <!-- Business Location with Google Maps -->
+                                <div class="additional-field" id="business-location-field">
+                                    <div class="form-group">
+                                        <label for="business-location" class="form-label">Business Location (Optional)</label>
+                                        <input type="text" id="business-location" class="form-input" placeholder="Search for your business address...">
+                                        <!-- Container for the Google Map -->
+                                        <div id="location-map" style="height: 200px; margin-top: 10px; border: 1px solid #ccc; display: none;"></div>
+                                        <!-- Hidden inputs to store coordinates -->
+                                        <input type="hidden" id="location-lat">
+                                        <input type="hidden" id="location-lng">
+                                    </div>
+                                </div>
+                         
+                        
 
                         <!-- Plan Selection Field -->
                         <div class="additional-field" id="plan-field">
@@ -251,12 +275,14 @@
                                     <label for="card-name" class="form-label">Name on Card</label>
                                     <input type="text" id="card-name" class="form-input" placeholder="John Doe">
                                 </div>
+                                <p>After clicking "Pay & Submit", you will be redirected to complete your payment
+                                        through:</p>
                             </div>
 
                             <!-- Mobile Wallet Instructions (shown when mobile wallet is selected) -->
                             <div class="payment-details" id="mobile-wallet-details" style="display: none;">
                                 <div class="wallet-instructions">
-                                    <p>After clicking "Sign Up", you will be redirected to complete your payment
+                                    <p>After clicking "Pay & Submit", you will be redirected to complete your payment
                                         through:</p>
                                     <div class="wallet-options">
                                         <div class="wallet-option">
@@ -410,7 +436,7 @@
 
                                 // Show selected payment method details
                                 if (this.value === 'credit-card') {
-                                    document.getElementById('credit-card-details').style.display = 'block';
+                                    document.getElementById('credit-card-details').style.display = 'flex';
                                 } else if (this.value === 'mobile-wallet') {
                                     document.getElementById('mobile-wallet-details').style.display = 'block';
                                 }
@@ -523,7 +549,7 @@
                         // Initialize
                         document.addEventListener('DOMContentLoaded', function () {
                             // Show credit card details by default
-                            document.getElementById('credit-card-details').style.display = 'block';
+                            document.getElementById('credit-card-details').style.display = 'flex';
 
                             // Set up switch between login/signup modes
                             const switchLink = document.getElementById('switch-to-signup');
@@ -537,6 +563,10 @@
                         });
                     </script>
                 </section>
+               
+               
+               
+                
             </div>
 
         </section>
@@ -566,6 +596,7 @@
                 const fullNameField = document.getElementById('full-name-field');
                 const businessField = document.getElementById('business-field');
                 const phoneField = document.getElementById('phone-field');
+                const businessLocationField = document.getElementById('business-location-field');
                 const planField = document.getElementById('plan-field');
                 const paymentSummaryField = document.getElementById('payment-summary-field');
                 const paymentMethodField = document.getElementById('payment-method-field');
@@ -615,6 +646,7 @@
                     businessField.classList.add('show');
                     phoneField.classList.add('show');
                     planField.classList.add('show');
+                    businessLocationField.classList.add('show');
                     paymentSummaryField.classList.add('show');
                     paymentMethodField.classList.add('show');
                     promoField.classList.add('show');
@@ -657,6 +689,7 @@
                     fullNameField.classList.remove('show');
                     businessField.classList.remove('show');
                     phoneField.classList.remove('show');
+                    businessLocationField.classList.remove('show');
                     planField.classList.remove('show');
                     paymentSummaryField.classList.remove('show');
                     paymentMethodField.classList.remove('show');
@@ -748,10 +781,7 @@
                     alert('Demo mode activated! This would show a preview of the Matager dashboard.');
                 });
 
-                // Demo functionality for "Upgrade to Pro" button
-                document.querySelector('.waitlist-btn').addEventListener('click', function () {
-                    alert('Redirecting to Pro upgrade page...');
-                });
+              
 
                 // Initial setup
                 updateProgress();
@@ -759,7 +789,8 @@
         </script>
 
         <section id="App" class="section App-section active">
-            <div class="section-content">
+            <div class="glassycardlight">
+                <div class="section-content">
                 <div class="left-div">
                     <div class="demo-text">
                         <h2 class="section-title">Manage Everything <span class="highlight-text">On The Go</span></h2>
@@ -771,7 +802,7 @@
                     </div>
                 </div>
 
-                <div class="right-div">
+                <div class="right-div glassycardlighter">
 
 
                     <!-- Download Buttons -->
@@ -815,11 +846,14 @@
 
                 </div>
             </div>
+            </div>
+            
         </section>
 
 
         <!-- Demo Section -->
         <section id="demo" class="section demo-section active">
+            <div class="glassycardlight">
             <div class="section-content">
                 <div class="right-div">
                     <div class="demo-text">
@@ -834,7 +868,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="left-div">
                     <!-- 4 Connected Steps -->
                     <div class="steps-container">
@@ -885,16 +918,18 @@
                     </div>
                 </div>
             </div>
+            </div>
         </section>
 
 
 
         <section id="Pricing" class="section Pricing-section">
+            <div class="glassycardlight">
             <div class="section-content">
                 <!-- Header -->
-                <div class="pricing-header">
+                <div class="demo-text">
                     <h1 class="section-title">Pricing Plans</h1>
-                    <p class="section-subtitle">Choose the perfect plan for your business needs. All plans include
+                    <p class="hero-subtitle">Choose the perfect plan for your business needs. All plans include
                         our core
                         features with additional benefits at higher tiers.</p>
                     <div class="view-toggle">
@@ -1232,6 +1267,7 @@
                     </div>
                 </div>
             </div>
+            </div>
         </section>
 
         <script>
@@ -1387,8 +1423,9 @@
 
 
         <section id="Faq" class="section fac-section">
-            <!-- FAQ Section -->
-            <div class="faq-section">
+              <div class="glassycardlight">
+                <div class="faq-section">
+                
                 <h2 class="section-title">Frequently Asked Questions</h2>
 
                 <div class="faq-item">
@@ -1459,10 +1496,14 @@
                     </div>
                 </div>
             </div>
+              </div>
+            <!-- FAQ Section -->
+            
         </section>
 
         <!-- CTA Section -->
         <section id="cta" class="section cta-section">
+            <div class="glassycardlight">
             <div class="section-content">
                 <div class="cta-card">
                     <h2 class="cta-title">Ready to Transform Your Business Workflow</h2>
@@ -1475,6 +1516,7 @@
                     <p style="margin-top: 1.5rem; color: #94a3b8; font-size: 0.9rem;">Free 14-day trial • No credit card
                         required</p>
                 </div>
+            </div>
             </div>
         </section>
     </div>
@@ -1501,7 +1543,7 @@
 
             const sections = document.querySelectorAll('.section');
             const scrollDots = document.querySelectorAll('.scroll-dot');
-            const navLinks = document.querySelectorAll('.nav-link');
+            // const navLinks = document.querySelectorAll('.nav-link');
 
             // Set first section as active initially
             let currentSection = 0;
@@ -1534,9 +1576,9 @@
                         scrollDots.forEach(dot => dot.classList.remove('active'));
                         scrollDots[index].classList.add('active');
 
-                        // Update nav links
-                        navLinks.forEach(link => link.classList.remove('active'));
-                        navLinks[index].classList.add('active');
+                        // // Update nav links
+                        // navLinks.forEach(link => link.classList.remove('active'));
+                        // navLinks[index].classList.add('active');
                     }
                 });
             }
@@ -1553,12 +1595,12 @@
             });
 
             // Add click events to nav links
-            navLinks.forEach((link, index) => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    scrollToSection(index);
-                });
-            });
+            // navLinks.forEach((link, index) => {
+            //     link.addEventListener('click', (e) => {
+            //         e.preventDefault();
+            //         scrollToSection(index);
+            //     });
+            // });
 
             // Update on scroll
             window.addEventListener('scroll', updateActiveSection);
@@ -1566,19 +1608,7 @@
             // Initialize
             updateActiveSection();
 
-            // Copy code button
-            const copyBtn = document.querySelector('.copy-btn');
-            copyBtn.addEventListener('click', function () {
-                const code = document.querySelector('pre').textContent;
-                navigator.clipboard.writeText(code).then(() => {
-                    const originalText = copyBtn.textContent;
-                    copyBtn.textContent = 'Copied!';
-                    setTimeout(() => {
-                        copyBtn.textContent = originalText;
-                    }, 2000);
-                });
-            });
-
+          
             // Form submission
             const ctaForm = document.querySelector('.cta-form');
             const ctaInput = document.querySelector('.cta-input');
@@ -1633,7 +1663,7 @@
                     entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }, observerOptions);
+        }, );
 
         // Observe plan cards
         document.querySelectorAll('.plan-card').forEach(card => {
